@@ -1,0 +1,43 @@
+<html lang="en">
+
+    <head>
+        {{> head}}           
+    </head>
+
+    <body>
+        <div class="wrapper">
+            {{> navbar}}
+            <div class="content">
+                <div class="content-header">
+                    İade Sorgula
+                </div>
+                <div class="form-area">
+                    <label>Sipariş Numarası (*):</label>
+                    <input
+                        name="orderId"
+                        type="text"
+                        class="form-control"
+                        value="afe88111-e833-b982-922f-0b7cf6a6b4c1"
+                    />
+                    <label>Tutar (**):</label>
+                    <input
+                        name="amount"
+                        type="text"
+                        class="form-control"
+                        value="100"
+                    />
+
+                    <button class="btn success" type="submit" id="pay">Iade
+                        Sorgula</button>
+                    <p>** Sipariş tutarı kuruş ayracı olmadan gönderilmelidir. Örneğin; 1 TL 100, 12 1200, 130 13000, 1.05 105, 1.2 120 olarak gönderilmelidir.</p>
+                </div>
+                <pre id="result">
+
+                </pre>
+            </div>
+        </div>
+        <script src="/js/template.js"></script>
+        <script src="/js/payment-refund-inquiry.js"></script>
+    </body>
+
+</html>

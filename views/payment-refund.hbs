@@ -1,0 +1,50 @@
+<html lang="en">
+
+    <head>
+        {{> head}}             
+    </head>
+
+    <body>
+        <div class="wrapper">
+            {{> navbar}}
+            <div class="content">
+                <div class="content-header">
+                    İade
+                </div>
+                <div class="form-area">
+                    <label>Sipariş Numarası (*):</label>
+                    <input
+                        name="orderId"
+                        type="text"
+                        class="form-control"
+                        value="1550972096"
+                    />
+                    <label>Refund Hash (***):</label>
+                    <input
+                        name="refundHash"
+                        type="text"
+                        class="form-control"
+                        value="006AYs42lD0p8nCbvU5FrPT3+8lOxScCAkuI1K9QedwXfWl9rA6DO0kwPorCpaIDmqe"
+                    />
+                    <label>Tutar (**):</label>
+                    <input
+                        name="amount"
+                        type="text"
+                        class="form-control"
+                        value="5000"
+                    />
+
+                    <button class="btn success" type="submit" id="pay">Sorgula</button>
+                    <p>*** İade sorgulama isteğinden dönen "refundHash" parametresidir.</p>
+                    <p>** Sipariş tutarı kuruş ayracı olmadan gönderilmelidir. Örneğin; 1 TL 100, 12 1200, 130 13000, 1.05 105, 1.2 120 olarak gönderilmelidir.</p>
+                </div>
+                <pre id="result">
+
+                </pre>
+            </div>
+        </div>
+        <script src="/js/template.js"></script>
+        <script src="/js/payment-refund.js"></script>
+    </body>
+
+</html>

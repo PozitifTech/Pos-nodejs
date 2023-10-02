@@ -1,0 +1,36 @@
+<html lang="en">
+
+    <head>
+        {{> head}}   
+    </head>
+
+    <body>
+        <div class="wrapper">
+            {{> navbar}}
+            <div class="content">
+                <div class="content-header">
+                    Ödeme Linki Sil
+                </div>
+                <div class="form-area">
+                    <label>Link Id (**):</label>
+                    <input
+                        name="linkId"
+                        type="text"
+                        class="form-control"
+                        value=""
+                    />
+
+                    <button class="btn success" type="submit" id="pay">Ödeme
+                        Linkini Sil</button>
+                    <p>** Ödeme linki oluşturduğunuzda dönen "linkPaymentId" parametresidir.</p>
+                </div>
+                <pre id="result">
+
+                </pre>
+            </div>
+        </div>
+        <script src="/js/template.js"></script>
+        <script src="/js/payment-link-delete.js"></script>
+    </body>
+
+</html>

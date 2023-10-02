@@ -1,0 +1,37 @@
+<html lang="en">
+
+    <head>
+        {{> head}}            
+    </head>
+
+    <body>
+        <div class="wrapper">
+            {{> navbar}}
+            <div class="content">
+                <div class="content-header">
+                    Ödeme Sorgulama
+                </div>
+                <div class="form-area">
+                    <label>Sipariş Numarası (*):</label>
+                    <input
+                        name="orderId"
+                        type="text"
+                        class="form-control"
+                        value="02399bf1-b918-4c31-f76c-8e92a21e4197"
+                    />
+                    <button
+                        class="btn success"
+                        type="submit"
+                        id="pay"
+                    >Ödeme Sorgula</button>
+                </div>
+                <pre id="result">
+
+                </pre>
+            </div>
+        </div>
+        <script src="/js/payment-inquiry.js"></script>
+        <script src="/js/template.js"></script>
+    </body>
+
+</html>
