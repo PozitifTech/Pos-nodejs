@@ -12,14 +12,14 @@ exports.app
             pageName: "3D Ödeme",
         });
     })
-    .get("/non-3d-payment", (req, res) => {
-        res.render("non-3d-payment", {
-            pageName: "Non-3D ile Ödeme",
-        });
-    })
     .get("/preauth", (req, res) => {
         res.render("preauth", {
             pageName: "Ön Otorizasyon Açma",
+        });
+    })
+    .get("/non-3d-payment", (req, res) => {
+        res.render("non-3d-payment", {
+            pageName: "Non-3D ile Ödeme",
         });
     })
     .get("/payment-inquiry", (req, res) => {

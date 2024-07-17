@@ -97,6 +97,103 @@ exports.api.post("/3d-payment", (req, res) => {
     });
 });
 
+exports.api.post("/preauth", (req, res) => {
+    if (
+        !req.body ||
+        !req.body.cardOwnerName ||
+        !req.body.cardNumber ||
+        !req.body.cardExpireMonth ||
+        !req.body.cardExpireYear ||
+        !req.body.cardCvc ||
+        !req.body.amount ||
+        !req.body.installment
+    )
+        return res.json({
+            error: "Gerekli alanlar boş!",
+        });
+
+    const {
+        cardOwnerName,
+        cardNumber,
+        cardExpireMonth,
+        cardExpireYear,
+        cardCvc,
+        amount,
+        installment,
+    } = req.body;
+
+    const obj = {
+        orderId: Guid.raw(),
+        cardOwnerName: cardOwnerName,
+        cardNumber: cardNumber,
+        cardExpireMonth: cardExpireMonth,
+        cardExpireYear: cardExpireYear,
+        cardCvc: cardCvc,
+        amount: amount,
+        installment: installment,
+        userId: "",
+        cardId: "",
+        echo: "",
+        purchaser: {
+            birthDate: "1986-07-11",
+            gsmNumber: "5881231212",
+            tcCertificate: "1234567890",
+            name: "Ahmet",
+            surname: "Veli",
+            email: "ahmet@veli.com",
+            clientIp: "123.58.7.4",
+            invoiceAddress: {
+                name: "Ahmet",
+                surname: "Veli",
+                address: "Mevlüt Pehlivan Mah. PosFix Plaza Şişli",
+                zipcode: "34782",
+                city: "34",
+                tcCertificate: "12345678901",
+                country: "tr",
+                taxNumber: "123456890",
+                taxOffice: "Şişli",
+                companyName: "PosFix",
+                phoneNumber: "2123886600",
+            },
+            shippingAddress: {
+                name: "Ahmet",
+                surname: "Veli",
+                address: "Mevlüt Pehlivan Mah. PosFix Plaza Şişli",
+                zipcode: "34782",
+                city: "34",
+                country: "tr",
+                phoneNumber: "2123886600",
+            },
+        },
+        products: [
+            {
+                productName: "Telefon",
+                productCode: "TLF0001",
+                quantity: "1",
+                price: "5000",
+            },
+            {
+                productName: "Bilgisayar",
+                productCode: "BIL0002",
+                quantity: "1",
+                price: "5000",
+            },
+        ],
+        threeD: "false",
+    };
+
+    posfix
+        .PreAuthRequest(obj)
+        .then((results) => {
+            res.json({
+                data: results,
+            });
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+});
+
 exports.api.post("/non-3d-payment", (req, res) => {
     if (
         !req.body ||
