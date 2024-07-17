@@ -268,6 +268,35 @@ exports.api.post("/bin-inquiry", (req, res) => {
         });
 });
 
+exports.api.post("/bin-inquiry-v4", (req, res) => {
+    if (
+        !req.body ||
+        !req.body.binNumber ||
+        !req.body.amount ||
+        !req.body.threeD
+    )
+        return res.json({
+            error: "Gerekli alanlar boş!",
+        });
+
+    const obj = {
+        binNumber: req.body.binNumber,
+        amount: req.body.amount,
+        threeD: req.body.threeD,
+    };
+
+    posfix
+        .BinNumberInquiryV4Request(obj)
+        .then((results) => {
+            res.json({
+                data: results,
+            });
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+});
+
 exports.api.post("/add-cart-to-wallet", (req, res) => {
     if (
         !req.body ||
