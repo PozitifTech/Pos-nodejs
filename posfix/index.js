@@ -15,6 +15,7 @@ const PaymentLinkDeleteRequest = require("./PaymentLinkDeleteRequest");
 const PaymentLinkInquiryRequest = require("./PaymentLinkInquiryRequest");
 const PaymentRefundRequest = require("./PaymentRefundRequest");
 const PaymentRefundInquiryRequest = require("./PaymentRefundInquiryRequest");
+const CheckoutFormCreateRequest = require("./CheckoutFormCreateRequest");
 
 module.exports = {
     NonThreeDPaymentRequest: NonThreeDPaymentRequest,
@@ -34,4 +35,5 @@ module.exports = {
     PaymentLinkDeleteRequest: PaymentLinkDeleteRequest,
     PaymentRefundRequest: PaymentRefundRequest,
     PaymentRefundInquiryRequest: PaymentRefundInquiryRequest,
+    CheckoutFormCreateRequest: CheckoutFormCreateRequest
 };

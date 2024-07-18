@@ -92,6 +92,11 @@ exports.app
             pageName: "Iade Sorgula",
         });
     })
+    .get("/checkout-form-create", (req, res) => {
+        res.render("checkout-form-create", {
+            pageName: "Checkout Form Oluşturma",
+        });
+    })
     .get("/success", (req, res) => {
         res.send("success !");
         res.end();
