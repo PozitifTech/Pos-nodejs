@@ -1,0 +1,40 @@
+<html lang="en">
+
+    <head>
+        {{> head}}
+    </head>
+
+    <body>
+        <div class="wrapper">
+            {{> navbar}}
+            <div class="content">
+                <div class="content-header">
+                    Ödeme Bilgileri
+                </div>
+                <div class="form-area">
+                    <label>Order Id:</label>
+                    <input
+                        name="orderId"
+                        type="text"
+                        class="form-control"
+                        value=""
+                    />
+                    <label>Amount:</label>
+                    <input
+                        name="amount"
+                        type="text"
+                        class="form-control"
+                        value=""
+                    />
+                    <button class="btn success" type="submit" id="postauth">Ön Otorizasyon Kapat</button>
+                </div>
+                <pre id="result">
+
+                </pre>
+            </div>
+        </div>
+        <script src="/js/postauth.js"></script>
+        <script src="/js/template.js"></script>
+    </body>
+
+</html>

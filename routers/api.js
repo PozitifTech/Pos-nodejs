@@ -291,6 +291,29 @@ exports.api.post("/non-3d-payment", (req, res) => {
         });
 });
 
+exports.api.post("/postauth", (req, res) => {
+    if (!req.body || !req.body.orderId || !req.body.amount)
+        return res.json({
+            error: "Gerekli alanlar boş!",
+        });
+
+    const obj = {
+        orderId: req.body.orderId,
+        amount: req.body.amount
+    };
+
+    posfix
+        .PaymentInquiryRequest(obj)
+        .then((results) => {
+            res.json({
+                data: results,
+            });
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+});
+
 exports.api.post("/payment-inquiry", (req, res) => {
     if (!req.body || !req.body.orderId)
         return res.json({

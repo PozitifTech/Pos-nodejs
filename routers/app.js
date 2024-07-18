@@ -22,6 +22,11 @@ exports.app
             pageName: "Non-3D ile Ödeme",
         });
     })
+    .get("/postauth", (req, res) => {
+        res.render("postauth", {
+            pageName: "Ön Otorizasyon Kapatma",
+        });
+    })
     .get("/payment-inquiry", (req, res) => {
         res.render("payment-inquiry", {
             pageName: "Ödeme Sorgulama",
