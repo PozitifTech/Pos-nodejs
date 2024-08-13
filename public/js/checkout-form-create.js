@@ -13,6 +13,7 @@ document.getElementById("check").addEventListener("click", function (e) {
         target.disabled = false;
         var data = JSON.parse(ajax.response);
         if (data.error) return alert(data.error);
+        data.data.script = data.data.script.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;")
         document.getElementById("result").innerHTML = JSON.stringify(
             data.data,
             null,

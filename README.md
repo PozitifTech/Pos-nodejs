@@ -121,7 +121,7 @@ Test kartlarımızda alınan hata kodları ve çözümleriyle ilgili detaylı bi
         cardExpireMonth: '12',
         cardExpireYear: '24',
         cardCvc: '000',
-        amount: '10000',
+        amount: '100',
         installment: '1',
         userId: "",
         cardId: "",

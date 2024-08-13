@@ -88,8 +88,8 @@ exports.api.post("/3d-payment", (req, res) => {
             },
         ],
         language: "tr-TR",
-        successUrl: "https://apitest.posfix.com.tr/rest/payment/threed/test/result",
-        failureUrl: "https://apitest.posfix.com.tr/rest/payment/threed/test/result",
+        successUrl: "https://api.posfix.com.tr/rest/payment/threed/test/result",
+        failureUrl: "https://api.posfix.com.tr/rest/payment/threed/test/result",
     };
 
     res.render("3d-one-step-form", {
@@ -508,7 +508,7 @@ exports.api.post("/payment-with-wallet", (req, res) => {
 
     const obj = {
         echo: "",
-        amount: "10000",
+        amount: "100",
         cardId: req.body.cardId,
         userId: req.body.userId,
         publicKey: settings.publicKey,
