@@ -58,7 +58,7 @@ function CheckoutFormCreateRequest(obj) {
         const data = JSON.stringify({
             orderId: crypto.randomUUID(),
             amount: 10000,
-            callbackUrl: "https://apitest.posfix.com.tr/rest/payment/threed/test/result",
+            callbackUrl: "https://api.posfix.com.tr/rest/payment/threed/test/result",
             threed: false,
             allowedInstallments: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
             mode: settings.mode,
