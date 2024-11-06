@@ -728,3 +728,21 @@ exports.api.post("/payment-link-inquiry", (req, res) => {
             console.log(err);
         });
 });
+
+exports.api.post("/checkout-form-create", (req, res) => {
+    if (!req.body)
+        return res.json({
+            error: "Gerekli alanlar boş!",
+        });
+
+    posfix
+        .CheckoutFormCreateRequest()
+        .then((results) => {
+            res.json({
+                data: results,
+            });
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+});
