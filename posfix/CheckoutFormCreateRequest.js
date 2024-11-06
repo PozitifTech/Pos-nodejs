@@ -99,7 +99,6 @@ function CheckoutFormCreateRequest(obj) {
                 resolve(result.data);
             })
             .catch((err) => {
-                console.log("ERROR ENTERED",err)
                 reject(err);
             });
     });
