@@ -12,9 +12,19 @@ exports.app
             pageName: "3D Ödeme",
         });
     })
+    .get("/preauth", (req, res) => {
+        res.render("preauth", {
+            pageName: "Ön Otorizasyon Açma",
+        });
+    })
     .get("/non-3d-payment", (req, res) => {
         res.render("non-3d-payment", {
             pageName: "Non-3D ile Ödeme",
+        });
+    })
+    .get("/postauth", (req, res) => {
+        res.render("postauth", {
+            pageName: "Ön Otorizasyon Kapatma",
         });
     })
     .get("/payment-inquiry", (req, res) => {
@@ -29,6 +39,11 @@ exports.app
     })
     .get("/bin-inquiry", (req, res) => {
         res.render("bin-inquiry", {
+            pageName: "Bin Sorgulama",
+        });
+    })
+    .get("/bin-inquiry-v4", (req, res) => {
+        res.render("bin-inquiry-v4", {
             pageName: "Bin Sorgulama",
         });
     })
@@ -75,6 +90,11 @@ exports.app
     .get("/payment-refund-inquiry", (req, res) => {
         res.render("payment-refund-inquiry", {
             pageName: "Iade Sorgula",
+        });
+    })
+    .get("/checkout-form-create", (req, res) => {
+        res.render("checkout-form-create", {
+            pageName: "Checkout Form Oluşturma",
         });
     })
     .get("/success", (req, res) => {

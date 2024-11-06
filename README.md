@@ -43,6 +43,9 @@ const settings = {
 PosFix örnek projelerinin amacı, yazılım geliştiricilere PosFix servislerine entegre olabilecek bir proje örneği sunmak ve entegrasyon adımlarının daha iyi anlaşılmasını sağlamaktır.
 Projeleri doğrudan canlı ortamınıza alarak kod değişimi yapmadan kullanmanız için desteğimiz bulunmamaktadır. **Projeyi bir eğitsel kaynak (tutorial) olarak kullanınız.**
 
+### Gerekli Teknolojiler
+* NodeJS
+
 ## Önemli Notlar
 
 * PosFix ile ilgili fonksiyonların hepsi ./posfix/index.js dosyasındadır. Sadece index.js yi çekerek tüm fonksiyonlara ulaşabilirsiniz.
@@ -118,7 +121,7 @@ Test kartlarımızda alınan hata kodları ve çözümleriyle ilgili detaylı bi
         cardExpireMonth: '12',
         cardExpireYear: '24',
         cardCvc: '000',
-        amount: '10000',
+        amount: '100',
         installment: '1',
         userId: "",
         cardId: "",

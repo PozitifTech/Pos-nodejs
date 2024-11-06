@@ -88,13 +88,110 @@ exports.api.post("/3d-payment", (req, res) => {
             },
         ],
         language: "tr-TR",
-        successUrl: "https://apitest.posfix.com.tr/rest/payment/threed/test/result",
-        failureUrl: "https://apitest.posfix.com.tr/rest/payment/threed/test/result",
+        successUrl: "https://api.posfix.com.tr/rest/payment/threed/test/result",
+        failureUrl: "https://api.posfix.com.tr/rest/payment/threed/test/result",
     };
 
     res.render("3d-one-step-form", {
         form: posfix.ThreeDPaymentRequest(obj),
     });
+});
+
+exports.api.post("/preauth", (req, res) => {
+    if (
+        !req.body ||
+        !req.body.cardOwnerName ||
+        !req.body.cardNumber ||
+        !req.body.cardExpireMonth ||
+        !req.body.cardExpireYear ||
+        !req.body.cardCvc ||
+        !req.body.amount ||
+        !req.body.installment
+    )
+        return res.json({
+            error: "Gerekli alanlar boş!",
+        });
+
+    const {
+        cardOwnerName,
+        cardNumber,
+        cardExpireMonth,
+        cardExpireYear,
+        cardCvc,
+        amount,
+        installment,
+    } = req.body;
+
+    const obj = {
+        orderId: Guid.raw(),
+        cardOwnerName: cardOwnerName,
+        cardNumber: cardNumber,
+        cardExpireMonth: cardExpireMonth,
+        cardExpireYear: cardExpireYear,
+        cardCvc: cardCvc,
+        amount: amount,
+        installment: installment,
+        userId: "",
+        cardId: "",
+        echo: "",
+        purchaser: {
+            birthDate: "1986-07-11",
+            gsmNumber: "5881231212",
+            tcCertificate: "1234567890",
+            name: "Ahmet",
+            surname: "Veli",
+            email: "ahmet@veli.com",
+            clientIp: "123.58.7.4",
+            invoiceAddress: {
+                name: "Ahmet",
+                surname: "Veli",
+                address: "Mevlüt Pehlivan Mah. PosFix Plaza Şişli",
+                zipcode: "34782",
+                city: "34",
+                tcCertificate: "12345678901",
+                country: "tr",
+                taxNumber: "123456890",
+                taxOffice: "Şişli",
+                companyName: "PosFix",
+                phoneNumber: "2123886600",
+            },
+            shippingAddress: {
+                name: "Ahmet",
+                surname: "Veli",
+                address: "Mevlüt Pehlivan Mah. PosFix Plaza Şişli",
+                zipcode: "34782",
+                city: "34",
+                country: "tr",
+                phoneNumber: "2123886600",
+            },
+        },
+        products: [
+            {
+                productName: "Telefon",
+                productCode: "TLF0001",
+                quantity: "1",
+                price: "5000",
+            },
+            {
+                productName: "Bilgisayar",
+                productCode: "BIL0002",
+                quantity: "1",
+                price: "5000",
+            },
+        ],
+        threeD: "false",
+    };
+
+    posfix
+        .PreAuthRequest(obj)
+        .then((results) => {
+            res.json({
+                data: results,
+            });
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 });
 
 exports.api.post("/non-3d-payment", (req, res) => {
@@ -194,6 +291,29 @@ exports.api.post("/non-3d-payment", (req, res) => {
         });
 });
 
+exports.api.post("/postauth", (req, res) => {
+    if (!req.body || !req.body.orderId || !req.body.amount)
+        return res.json({
+            error: "Gerekli alanlar boş!",
+        });
+
+    const obj = {
+        orderId: req.body.orderId,
+        amount: req.body.amount
+    };
+
+    posfix
+        .PaymentInquiryRequest(obj)
+        .then((results) => {
+            res.json({
+                data: results,
+            });
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+});
+
 exports.api.post("/payment-inquiry", (req, res) => {
     if (!req.body || !req.body.orderId)
         return res.json({
@@ -258,6 +378,35 @@ exports.api.post("/bin-inquiry", (req, res) => {
 
     posfix
         .BinNumberInquiryRequest(obj)
+        .then((results) => {
+            res.json({
+                data: results,
+            });
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+});
+
+exports.api.post("/bin-inquiry-v4", (req, res) => {
+    if (
+        !req.body ||
+        !req.body.binNumber ||
+        !req.body.amount ||
+        !req.body.threeD
+    )
+        return res.json({
+            error: "Gerekli alanlar boş!",
+        });
+
+    const obj = {
+        binNumber: req.body.binNumber,
+        amount: req.body.amount,
+        threeD: req.body.threeD,
+    };
+
+    posfix
+        .BinNumberInquiryV4Request(obj)
         .then((results) => {
             res.json({
                 data: results,
@@ -359,7 +508,7 @@ exports.api.post("/payment-with-wallet", (req, res) => {
 
     const obj = {
         echo: "",
-        amount: "10000",
+        amount: "100",
         cardId: req.body.cardId,
         userId: req.body.userId,
         publicKey: settings.publicKey,
@@ -570,6 +719,24 @@ exports.api.post("/payment-link-inquiry", (req, res) => {
 
     posfix
         .PaymentLinkInquiryRequest(obj)
+        .then((results) => {
+            res.json({
+                data: results,
+            });
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+});
+
+exports.api.post("/checkout-form-create", (req, res) => {
+    if (!req.body)
+        return res.json({
+            error: "Gerekli alanlar boş!",
+        });
+
+    posfix
+        .CheckoutFormCreateRequest()
         .then((results) => {
             res.json({
                 data: results,
