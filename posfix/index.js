@@ -3,6 +3,7 @@ const ThreeDPaymentRequest = require("./ThreeDPaymentRequest");
 const PaymentInquiryRequest = require("./PaymentInquiryRequest");
 const PaymentInquiryWithTimeRequest = require("./PaymentInquiryWithTimeRequest");
 const BinNumberInquiryRequest = require("./BinNumberInquiryRequest");
+const BinNumberInquiryV4Request = require("./BinNumberInquiryV4Request");
 const AddCardToWalletRequest = require("./AddCardToWalletRequest");
 const BankCardInquiryRequest = require("./BankCardInquiryRequest");
 const BankCardDeleteRequest = require("./BankCardDeleteRequest");
@@ -19,6 +20,7 @@ module.exports = {
     PaymentInquiryRequest: PaymentInquiryRequest,
     PaymentInquiryWithTimeRequest: PaymentInquiryWithTimeRequest,
     BinNumberInquiryRequest: BinNumberInquiryRequest,
+    BinNumberInquiryV4Request: BinNumberInquiryV4Request,
     AddCardToWalletRequest: AddCardToWalletRequest,
     BankCardInquiryRequest: BankCardInquiryRequest,
     BankCardDeleteRequest: BankCardDeleteRequest,

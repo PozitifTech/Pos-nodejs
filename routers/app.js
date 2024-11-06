@@ -17,6 +17,11 @@ exports.app
             pageName: "Non-3D ile Ödeme",
         });
     })
+    .get("/preauth", (req, res) => {
+        res.render("preauth", {
+            pageName: "Ön Otorizasyon Açma",
+        });
+    })
     .get("/payment-inquiry", (req, res) => {
         res.render("payment-inquiry", {
             pageName: "Ödeme Sorgulama",
@@ -29,6 +34,11 @@ exports.app
     })
     .get("/bin-inquiry", (req, res) => {
         res.render("bin-inquiry", {
+            pageName: "Bin Sorgulama",
+        });
+    })
+    .get("/bin-inquiry-v4", (req, res) => {
+        res.render("bin-inquiry-v4", {
             pageName: "Bin Sorgulama",
         });
     })
