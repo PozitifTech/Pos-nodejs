@@ -1,6 +1,7 @@
 const NonThreeDPaymentRequest = require("./NonThreeDPaymentRequest");
 const PreAuthRequest = require("./PreAuthRequest");
 const ThreeDPaymentRequest = require("./ThreeDPaymentRequest");
+const PostAuthRequest = require("./PostAuthRequest");
 const PaymentInquiryRequest = require("./PaymentInquiryRequest");
 const PaymentInquiryWithTimeRequest = require("./PaymentInquiryWithTimeRequest");
 const BinNumberInquiryRequest = require("./BinNumberInquiryRequest");
@@ -19,6 +20,7 @@ module.exports = {
     NonThreeDPaymentRequest: NonThreeDPaymentRequest,
     PreAuthRequest: PreAuthRequest,
     ThreeDPaymentRequest: ThreeDPaymentRequest,
+    PostAuthRequest: PostAuthRequest,
     PaymentInquiryRequest: PaymentInquiryRequest,
     PaymentInquiryWithTimeRequest: PaymentInquiryWithTimeRequest,
     BinNumberInquiryRequest: BinNumberInquiryRequest,

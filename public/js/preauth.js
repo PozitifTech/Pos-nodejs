@@ -27,7 +27,7 @@ document.getElementById("preauth").addEventListener("click", function (e) {
     ajax.open("POST", "/api/preauth", true);
     ajax.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     ajax.onload = function () {
-        target.innerHTML = "Ön Otorizasyon";
+        target.innerHTML = "Ön Otorizasyon Açma";
         target.disabled = false;
         var data = JSON.parse(ajax.response);
         if (data.error) return alert(data.error);
