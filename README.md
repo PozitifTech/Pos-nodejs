@@ -2,8 +2,6 @@ PosFix - Nodejs Kütüphanesi
 ===================
 
 PosFix Nodejs Kütüphanesidir. PosFix API'lerine çok hızlı bir şekilde bağlanmanızı sağlar.
-[https://www.posfix.com.tr](https://www.posfix.com.tr) adresimizden mağaza başvurusu yaparak
-hesabınızı açabilirsiniz.
 
 ## Sistem Gereksinimleri
 
